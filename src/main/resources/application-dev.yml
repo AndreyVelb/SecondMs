@@ -1,0 +1,28 @@
+server:
+  port: ${SECOND_PORT:8083}
+
+spring:
+  application:
+    name: SecondMs
+  datasource:
+    url: jdbc:postgresql://seconddb:${SECOND_DB_PORT}/${SECOND_DB}
+    username: ${SECOND_DB_USER}
+    password: ${SECOND_DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  sql:
+    init:
+      mode: always
+
+cluster:
+  firstms:
+    host: firstms
+    port: ${FIRST_PORT:8085}
+    url: /api/v1/first
