@@ -23,6 +23,4 @@ spring:
 
 cluster:
   firstms:
-    host: firstms
-    port: ${FIRST_PORT:8085}
-    url: /api/v1/first
+    url: http://firstms:${FIRST_PORT:8085}/api/v1/first
