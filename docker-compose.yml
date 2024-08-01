@@ -19,6 +19,7 @@ services:
       - SECOND_DB_PORT=${SECOND_DB_PORT}
     depends_on:
       - seconddb
+      - kafka
     networks:
       - ms-network
 
@@ -34,7 +35,6 @@ services:
     command: ["postgres", "-p", "${SECOND_DB_PORT}"]
     networks:
       - ms-network
-
 
 networks:
   ms-network:
