@@ -4,6 +4,7 @@ server:
 spring:
   application:
     name: SecondMs
+
   datasource:
     url: jdbc:postgresql://seconddb:${SECOND_DB_PORT}/${SECOND_DB}
     username: ${SECOND_DB_USER}
@@ -20,6 +21,16 @@ spring:
   sql:
     init:
       mode: always
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: group_id
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
 cluster:
   firstms:

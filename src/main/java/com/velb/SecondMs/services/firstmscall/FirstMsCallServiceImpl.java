@@ -1,4 +1,4 @@
-package com.velb.SecondMs.services;
+package com.velb.SecondMs.services.firstmscall;
 
 import com.velb.SecondMs.controllers.dto.SaveFirstEntityRequest;
 import lombok.RequiredArgsConstructor;
