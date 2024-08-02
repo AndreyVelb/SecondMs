@@ -1,5 +1,3 @@
-version: '3'
-
 services:
 
   secondms:
@@ -17,9 +15,9 @@ services:
       - SECOND_DB_PASSWORD=${SECOND_DB_PASSWORD}
       - SECOND_DB=${SECOND_DB}
       - SECOND_DB_PORT=${SECOND_DB_PORT}
+      - KAFKA_INSIDE_PORT=${KAFKA_INSIDE_PORT}
     depends_on:
       - seconddb
-      - kafka
     networks:
       - ms-network
 

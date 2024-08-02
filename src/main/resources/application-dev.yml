@@ -23,14 +23,14 @@ spring:
       mode: always
 
   kafka:
-    bootstrap-servers: kafka:9093
+    bootstrap-servers: kafka:${KAFKA_INSIDE_PORT}
     consumer:
       group-id: group-id
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: com.velb.SecondMs.model.deserializers.SaveSecondEntityDtoDeserializer
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: com.velb.SecondMs.model.serializers.SaveFirstEntityDtoSerializer
 
 cluster:
   firstms:
