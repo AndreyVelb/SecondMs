@@ -17,21 +17,38 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-
   sql:
     init:
       mode: always
-
   kafka:
     bootstrap-servers: kafka:${KAFKA_INSIDE_PORT}
     consumer:
       group-id: group-id
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: com.velb.SecondMs.model.deserializers.SaveSecondEntityDtoDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            value:
+              default:
+                type: com.velb.SecondMs.model.dto.SaveSecondEntityDto
+          trusted:
+            packages: com.velb
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: com.velb.SecondMs.model.serializers.SaveFirstEntityDtoSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring:
+          json:
+            add:
+              type:
+                headers: false
 
 cluster:
   firstms:
     url: http://firstms:${FIRST_PORT:8085}/api/v1/first
+
+  kafka:
+    topic:
+      first-topic: first-topic
+      second-topic: second-topic
