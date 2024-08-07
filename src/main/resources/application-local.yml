@@ -16,9 +16,18 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+  kafka:
+    bootstrap-servers: kafka:9092
+    consumer:
+      group-id: group-id
 
 cluster:
   firstms:
     port: 8080
     host: localhost
     url: /api/v1/first
+
+  kafka:
+    topic:
+      first-topic: first-topic
+      second-topic: second-topic
