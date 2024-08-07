@@ -1,4 +1,4 @@
-package com.velb.SecondMs.services;
+package com.velb.SecondMs.services.secondentity;
 
 import com.velb.SecondMs.controllers.dto.SaveSecondEntityRequest;
 import com.velb.SecondMs.controllers.dto.SaveSecondEntityResponse;
