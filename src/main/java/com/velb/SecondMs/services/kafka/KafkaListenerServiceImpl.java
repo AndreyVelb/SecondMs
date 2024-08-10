@@ -19,7 +19,8 @@ public class KafkaListenerServiceImpl implements KafkaListenerService {
 
     private static final Logger logger = LoggerFactory.getLogger(KafkaListenerServiceImpl.class);
 
-    @KafkaListener(topics = "second-topic", groupId = "group-id")
+    @KafkaListener(topics = "second-topic", groupId = "group-id",
+            properties = {"spring.json.value.default.type=com.velb.SecondMs.model.dto.SaveSecondEntityDto"})
     public void consume(SaveSecondEntityDto dto) {
         logger.info("SAVING SECOND_ENTITY IN DB");
         secondEntityRepository.save(SecondEntity.builder()
