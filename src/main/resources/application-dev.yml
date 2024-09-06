@@ -28,15 +28,11 @@ spring:
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
         spring:
-          json:
-            value:
-              default:
-                type: com.velb.SecondMs.model.dto.SaveSecondEntityDto
           trusted:
             packages: com.velb
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
       properties:
         spring:
           json:
